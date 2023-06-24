@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+<title>Calculadora de Movimiento</title>
+</head>
+
+<body>
+	<div style="margin:24px;">
+		<nav class="navbar navbar-light" style="background-color: #e0e0e0;">
+		   <div class="container">
+			 <a class="navbar-brand" href="inicio.html">Inicio</a> 
+			 <ul class="nav navbar-nav">
+			   <li class="active">
+				<a href="Perfil.html">Perfil</a>
+			   </li>
+			   <li>
+			   <a href="index.html">Calculadora Fisica</a>
+			</li>
+			<li>
+				<a href="index3.html">Calculadora</a>
+			</li>
+			   <li>
+				   <a href="Resultado3.html">Resultado</a>    
+			   </li>
+	
+			   <li>
+				   <a href="apimivies.html">Peliculas</a>
+			   </li>    
+			  <li class="active">
+				<a href="cuestionario.html">Cuestionario</a>
+			  </li>
+			  <li>
+				<a href="pedido.html">Pedido</a>
+			  </li>
+			  </ul>
+		   </div>
+		 </nav>
+		 </div>
+	
+	<nav class="navbar navbar-light" style="background-color: #ccd5ae;">
+  <!-- Navbar content -->
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+	<div class="countainer">
+		<h1 class="display-4">Calculadora de Fisica</h1>
+		<p class="lead">Los elementos que se consideran necesarios para facilitar el aprendizaje de conceptos y la aplicacion de modelos matematicos como:</p><p><li>sistemas de unidades magnitudes escalares</li><li> magnitudes vectoriales</li><li>notacion cientifica</li>analisis dimensional<li> vectores</li><li> graficacion y algebra vectorial.</li></p>
+
+
+	</div>
+</div>
+<form id="formulario">
+	<label form="distancia">Distancia:</label>
+	<input type="text" id="distancia" name="distancia">
+	<select id="distanciaUnidad">
+		<option value="metros">metros</option>
+		<option value="pies">pies</option>
+	</select>
+	<br>
+	<label form="tiempo">Tiempo:</label>
+	<input type="text" id="tiempo" name="tiempo">
+	<select id="tiempoUnidad">
+		<option value="segundos">segundos</option>
+		<option value="horas">horas</option>
+</select>
+<br>
+<label for="velocidadUnidad">Unidades de Velocidad:</label>
+<select id="velocidadUnidad">
+	<option value="metros_por_segundo">m/s</option>
+	<option value="pies_por_segundo">ft/s</option>
+	<option value="kilometros_por_hora">k/s</option>
+	<option value="millas_por_hora">mph</option>
+</select>
+<br>
+<br>
+<button type="button" class="btn btn-secondary" value="Calcular" onclick="Calcular()">Calcular</button>
+</form>
+<br>
+<p id="resultado"></p>
+<p style="color: #dad7cd; background-color:#3a5a40;">Velocidad: <span id="velocidad"></span></p>
+<p style="color: #dad7cd; background-color:#3a5a40;">Aceleracion: <span id="aceleracion"></span></p>
+<p style="color: #dad7cd; background-color:#3a5e40;">Rapidez: <span id="rapidez"></span></p>
+
+<script type="text/javascript">
+
+	function Calcular() {
+		const distancia = parseFloat(document.getElementById('distancia').value);
+		const tiempo =parseFloat(document.getElementById('tiempo').value);
+        //estas son las 3 variables para poner las unidades metricas
+        const distanciaUnidad= document.getElementById('distanciaUnidad').value;
+        const tiempoUnidad= document.getElementById('tiempoUnidad').value;
+        const velocidadUnidad= document.getElementById('velocidadUnidad').value;
+
+       //convertir unidades a Sistema Metrico Internacional (SI)
+       let distanciaSI = 0; //<--modifico esta linea
+       let tiempoSI = 0; //<--modifico esta linea
+
+       //dependiendo las unidades que seleccionaron, uso este IF
+       if(distancia === 'metros'){
+       	distanciaSI = distancia;
+       } else if (distanciaUnidad === 'pies'){
+       	distanciaSI = distancia /3.281; //son 3 pies por cada  metro, por eso la division de 3.281, para mas informacion , checar susapuntes de fisica.
+       }
+       if(tiempoUnidad ==='segundos'){
+       	tiempoSI = tiempo;
+		   console.log("tiempo: "+tiempo);
+		   console.log("tiempoSI: "+tiempoSI);
+       }else if(tiempoUnidad ==='horas'){
+       	tiempoSI = tiempo * 3600; //lo mismo de arriba multiplico por 3600 para la cantidad de segundos en un minuto (60) por los 60 minutos de hora (60) 60*60=3600
+       }
+      //Con el siguiente codigo se calcula la velocida, aceleracion y rapidez (aunque no hat formula, por lo pronto para ella, solo dire que es igual a la velocidad)
+	  console.log("23distanciaSI: "+distancia);
+		console.log("34tiempoSI: "+tiempo);
+		console.log("23distanciaSI: "+distanciaSI);
+		console.log("34tiempoSI: "+tiempoSI);
+		
+       let velocidad = 0;
+       let aceleracion = 0;
+       let rapidez = 0;
+
+       if(velocidadUnidad === 'metros_por_segundo'){
+       	velocidad= distanciaSI / tiempoSI;
+       	rapidez= velocidad;
+       	aceleracion = velocidad /tiempoSI;
+		   console.log("distanciaSI: "+distanciaSI);
+		console.log("tiempoSI: "+tiempoSI);
+		console.log("velocidad: "+velocidad);
+		console.log("aceleracion: "+aceleracion);
+		console.log("rapidez: "+rapidez);
+       }
+       else if(velocidadUnidad === 'pies_por_segundo'){
+       	velocidad = (distanciaSI*3.28) / tiempoSI;
+       	rapidez = velocidad;
+       	aceleracion = velocidad/ tiempoSI;
+		   console.log("distanciaSI: "+distanciaSI);
+		console.log("tiempoSI: "+tiempoSI);
+		console.log("velocidad: "+velocidad);
+		console.log("aceleracion: "+aceleracion);
+		console.log("rapidez: "+rapidez);
+       }
+       else if(velocidadUnidad === 'kilometros_por_hora'){
+       velocidad = (distanciaSI/1000) / (tiempoSI/3600);
+       	rapidez = velocidad;
+       	aceleracion = velocidad/ tiempoSI;
+		   console.log("distanciaSI: "+distanciaSI);
+		console.log("tiempoSI: "+tiempoSI);
+		console.log("velocidad: "+velocidad);
+		console.log("aceleracion: "+aceleracion);
+		console.log("rapidez: "+rapidez);
+       }
+       else if(velocidadUnidad === 'millas_por_hora'){
+       velocidad = (distanciaSI/1609) / (tiempoSI / 3600);
+       rapidez = velocidad;
+       aceleracion = velocidad/ (tiempoSI/ 3600);
+	   console.log("distanciaSI: "+distanciaSI);
+		console.log("tiempoSI: "+tiempoSI);
+		console.log("velocidad: "+velocidad);
+		console.log("aceleracion: "+aceleracion);
+		console.log("rapidez: "+rapidez);
+	}
+	//mostrar los resultados
+	let resultado = '';
+
+	document.getElementById('velocidad').textContent = velocidad.toFixed(5) + ' ' +velocidadUnidad;
+	document.getElementById('aceleracion').textContent = aceleracion.toFixed(5) + ' ' + 'm/s^2';
+	document.getElementById('rapidez').textContent = rapidez.toFixed(5) + ' ' +velocidadUnidad;
+		document.getElementById('resultado').innerHTML = resultado;
+ }
+
+</script>
+<div id="footer"></div>
+<script >
+	$(function(){
+		$('#footer').load("/Escritorio/Tareas Isa/Isa/footer.html")
+	});
+</script>
+</body>
+</html>
+
+
+
